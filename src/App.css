@@ -4,12 +4,17 @@
     letter-spacing: 1px;
 }
 
+button {
+    cursor: pointer;
+    outline: none;
+}
+
 #clock {
     background: black;
     color: white;
     letter-spacing: 3px;
     font-weight: 600;
-    padding: 20px 0;
+    padding: 40px 0;
     margin: auto;
     margin-top: 20px;
     width: 300px;
@@ -19,7 +24,7 @@
 #timer {
     letter-spacing: 3px;
     font-weight: 600;
-    padding: 20px 0;
+    padding: 40px 0;
     margin: auto;
     margin-top: 20px;
     width: 300px;
@@ -40,4 +45,16 @@
 
 .done {
     background: red;
+}
+
+#weatherApp {
+    background: black;
+    color: white;
+    letter-spacing: 3px;
+    font-weight: 600;
+    padding: 40px 0;
+    margin: auto;
+    margin-top: 20px;
+    width: 300px;
+    border-radius: 10px;
 }

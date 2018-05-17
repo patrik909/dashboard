@@ -7,7 +7,7 @@ class Timer extends Component {
     }
 
     componentDidMount() {
-        this.setState({ timeLeft: 100 * 6 / 100 })
+        this.setState({ timeLeft: 1000 * 6 / 100 })
     }
 
     activateTimer = () => {
@@ -30,7 +30,7 @@ class Timer extends Component {
     }
     
     resetTimer = () => {
-        this.setState({ timeLeft: 100 * 6 / 100 })        
+        this.setState({ timeLeft: 1000 * 6 / 100 })        
     }
     
     timerButton = () => {
