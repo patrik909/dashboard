@@ -58,3 +58,15 @@ button {
     width: 300px;
     border-radius: 10px;
 }
+
+#postIt {
+    background: black;
+    color: white;
+    letter-spacing: 3px;
+    font-weight: 600;
+    padding: 40px 0px;
+    margin: auto;
+    margin-top: 20px;
+    width: 300px;
+    border-radius: 10px;
+}

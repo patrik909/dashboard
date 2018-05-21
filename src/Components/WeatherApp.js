@@ -6,7 +6,7 @@ class WeatherApp extends Component {
         weatherData: []
     }
 
-    componentDidMount(){  
+    componentWillMount(){  
         this.fetchWeather();
     }
 
@@ -22,13 +22,19 @@ class WeatherApp extends Component {
     }
  
     render() {
-        console.log(this.state.weatherData)
-        
-        return (
-            <div id="weatherApp">
-                {this.state.weatherData.name}
-            </div>
-        );
+
+        if(this.state.weatherData.length !== 0) {
+            return (
+                <div id="weatherApp">
+                    {this.state.weatherData.name} <br />
+                    Temperatur: {this.state.weatherData.main.temp} <br />
+                    Väder: {this.state.weatherData.weather[0].description}
+                </div>
+            );
+        } else {
+            return null
+        }
+
     }
 }
 
