@@ -4,14 +4,45 @@
     letter-spacing: 1px;
 }
 
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: black;
+    height: 120px;
+    padding: 0px 80px;
+}
+
+header h1 {
+    color: white;
+    letter-spacing: 15px;
+    text-transform: uppercase;
+    font-weight: 900;
+    margin: 0;
+}
+
+header #clock {
+    font-weight: 600;
+    font-size: 1.2em;
+    letter-spacing: 5px;
+    background: white;
+    padding: 7px 18px;
+    border-radius: 5px;
+}
+
+/* ------ */
+
 button {
     cursor: pointer;
     outline: none;
 }
 
+
+
 #clock {
-    background: black;
-    color: white;
+/*    background: black;*/
+/*    color: white;*/
+/*
     letter-spacing: 3px;
     font-weight: 600;
     padding: 40px 0;
@@ -19,6 +50,7 @@ button {
     margin-top: 20px;
     width: 300px;
     border-radius: 10px;
+*/
 }
 
 #timer {
@@ -47,24 +79,12 @@ button {
     background: red;
 }
 
-#weatherApp {
+#weatherApp, #postIt, #exchangeRate {
     background: black;
     color: white;
     letter-spacing: 3px;
     font-weight: 600;
     padding: 40px 0;
-    margin: auto;
-    margin-top: 20px;
-    width: 300px;
-    border-radius: 10px;
-}
-
-#postIt {
-    background: black;
-    color: white;
-    letter-spacing: 3px;
-    font-weight: 600;
-    padding: 40px 0px;
     margin: auto;
     margin-top: 20px;
     width: 300px;

@@ -13,11 +13,10 @@ class Clock extends Component {
     }
 
     getTime = () => {
-        let now = new Date();
-        let hour = now.getHours();
-        let minute = now.getMinutes();
-        let secound = now.getSeconds();
-        
+        const date = new Date();
+        const hour = date.getHours();
+        const minute = date.getMinutes();
+        const secound = date.getSeconds();
         this.formateTime(hour, minute, secound)
     }
     
@@ -34,7 +33,7 @@ class Clock extends Component {
     render() { 
         return(
             <div id="clock">{this.state.hours}:{this.state.minutes}:{this.state.secounds}</div>
-        )
+        );
     }
 }
 

@@ -38,7 +38,6 @@ class PostIt extends Component {
             <div id="postIt">
                 <input type="text" id="rememberThis" onChange={ this.handleChange }></input>
                 <button type="button" id="rememberThisButton" onClick={this.postIt}>POST-IT</button>
-                <button type="button" id="rememberThisButton" onClick={this.getPostIts}>VIEW POST-IT</button>
                 <ul>
                     {this.state.postItArray.map((item,i) => <li key={i}>{item}<button value={item} onClick={this.deletePostIt}>X</button></li>)}
                 </ul>

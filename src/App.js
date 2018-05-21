@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Clock from './Components/Clock';
+import Header from './Components/Header';
 import Timer from './Components/Timer';
 import WeatherApp from './Components/WeatherApp';
 import PostIt from './Components/PostIt';
@@ -13,7 +13,7 @@ class App extends Component {
       
     return (
       <div className="App">
-        <Clock />
+        <Header />
         <Timer />
         <WeatherApp />
         <PostIt />
