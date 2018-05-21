@@ -3,6 +3,7 @@ import Clock from './Components/Clock';
 import Timer from './Components/Timer';
 import WeatherApp from './Components/WeatherApp';
 import PostIt from './Components/PostIt';
+import ExchangeRate from './Components/ExchangeRate';
 
 import './App.css';
 
@@ -16,6 +17,7 @@ class App extends Component {
         <Timer />
         <WeatherApp />
         <PostIt />
+        <ExchangeRate />
       </div>
     );
   }
