@@ -1,13 +1,14 @@
 import React from 'react';
-import Clock from './Clock';
+import Clock from './CompFunctions/Clock';
+import Heading1 from './Heading1';
 
 function Header(){
-  return(
-    <header>
-      <h1>DashBash</h1>
-      <Clock />
-    </header>
-  );
+    return(
+        <header>
+            <Heading1 />
+            <Clock />
+        </header>
+    );
 }
 
 export default Header;

@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Components/Header';
-import Timer from './Components/Timer';
-import WeatherApp from './Components/WeatherApp';
-import PostIt from './Components/PostIt';
-import ExchangeRate from './Components/ExchangeRate';
+import Main from './Components/Main';
 
 import './App.css';
 
@@ -14,10 +11,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Timer />
-        <WeatherApp />
-        <PostIt />
-        <ExchangeRate />
+        <Main />
       </div>
     );
   }
