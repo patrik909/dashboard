@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Heading2 from './Parts/Heading2';
 
 class Timer extends Component {
 
@@ -73,6 +74,11 @@ let className = ''
 
         return(
             <div id="timer" className={className}>
+                <Heading2 
+                    title={
+                        "Timer"
+                    }
+                />
                <input type="text" id="setTimerInput" onChange={this.handleChange}></input>
                <button type="button" id="setTimerButton" onClick={this.setTimer}>Set time</button>
                {this.timerButton()}

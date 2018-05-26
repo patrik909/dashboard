@@ -1,33 +1,75 @@
 import React, { Component } from 'react';
 import Heading2 from './Parts/Heading2';
-import InputField from './Parts/InputField';
 import Button from './Parts/Button';
-import ViewPostIts from './Parts/ViewPostIts';
 
 class PostIt extends Component {
 
     state = {
         input: '',
-        postItArray: []
+        postItArray: '',
+        amountOfPostIts: '',
+        wordEnding: '',
+        divStyle: 'hide'
     }
 
-    componentDidMount(){  
-        this.getPostIts()
+    componentDidMount(){
+        this.getPostIts();
+    }
+
+    getPostIts = () => {
+        const postIts = localStorage.getItem('postIts');
+        this.setState({
+            postItArray: JSON.parse(postIts) || []
+        }, () => {
+//            console.log(this.state.postItArray)
+            this.setAmountPostIt();
+            console.log(this.state.postItArray)
+        });
+        this.demoMethod();
+    }
+
+    setAmountPostIt = () => {
+        if(this.state.postItArray.length > 1) {
+            this.setState({
+                amountOfPostIts: this.state.postItArray.length,
+                wordEnding: 's'
+            });
+        } else if(this.state.postItArray.length === 0) {
+            this.setState({
+                amountOfPostIts: 0,
+                wordEnding: 's'});   
+        } else {
+            this.setState({
+                amountOfPostIts: this.state.postItArray.length
+            });
+        } 
     }
 
     handleChange = (event) => {
-        this.setState({ input: event.target.value })
+        this.setState({input: event.target.value});
     }
 
     postIt = () => {
-        this.state.postItArray.unshift(this.state.input);
-        localStorage.setItem('postIt', JSON.stringify(this.state.postItArray));
-        this.getPostIts()
+        const timeStamp = new Date();
+        let newPostIt = {
+            timestamp: timeStamp,
+            postItContent: this.state.input
+        }
+        this.state.postItArray.unshift(newPostIt);
+        localStorage.setItem('postIts', JSON.stringify(this.state.postItArray));
+        
+        this.getPostIts();
     }
     
-    getPostIts = () => {
-        const postIt = localStorage.getItem('postIt');
-        this.setState({postItArray: JSON.parse(postIt)})
+    showPostIts = () => {
+        this.props.setDivStyle('show');
+    }
+    
+    closePost = () => {
+        
+    }
+    
+    demoMethod = () => {
     }
     
     deletePostIt = (event) => {
@@ -36,8 +78,9 @@ class PostIt extends Component {
         localStorage.setItem('postIt', JSON.stringify(this.state.postItArray));
         this.getPostIts()
     }
- 
+    
     render() {
+
         return (
             <div id="postIt">
                 <Heading2 
@@ -45,11 +88,18 @@ class PostIt extends Component {
                         "Post it"
                     } 
                 />
-                <InputField 
-                    handle={
+                <p id="amountOfPostIts">
+                    Du har ({this.state.amountOfPostIts}) Post-It{this.state.wordEnding}
+                </p>
+                <textarea 
+                   rows="8"
+                   maxLength="150"
+                   placeholder="Max 150 tecken!"
+                   onChange={
                         this.handleChange
                     }
-                />
+                >
+                </textarea>    
                 <Button 
                     buttonMission={
                         this.postIt
@@ -58,9 +108,12 @@ class PostIt extends Component {
                         "Post-it"
                     }
                 />
-                <ViewPostIts 
-                    postItArray={
-                        this.state.postItArray
+                <Button 
+                    buttonMission={
+                        this.showPostIts
+                    }
+                    buttonText={
+                        "Se dina Post-Its"
                     }
                 />
             </div>
