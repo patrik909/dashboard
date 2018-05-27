@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Heading2 from './Parts/Heading2';
 import Button from './Parts/Button';
+import ViewPostIts from './Parts/ViewPostIts';
 
 class PostIt extends Component {
 
@@ -9,7 +10,7 @@ class PostIt extends Component {
         postItArray: '',
         amountOfPostIts: '',
         wordEnding: '',
-        divStyle: 'hide'
+        divStyle: 'show'
     }
 
     componentDidMount(){
@@ -23,7 +24,7 @@ class PostIt extends Component {
         }, () => {
 //            console.log(this.state.postItArray)
             this.setAmountPostIt();
-            console.log(this.state.postItArray)
+//            console.log(this.state.postItArray)
         });
         this.demoMethod();
     }
@@ -62,11 +63,11 @@ class PostIt extends Component {
     }
     
     showPostIts = () => {
-        this.props.setDivStyle('show');
+        this.setState({divStyle: 'show'})
     }
     
-    closePost = () => {
-        
+    closePostIts = () => {
+        this.setState({divStyle: 'hide'})
     }
     
     demoMethod = () => {
@@ -79,6 +80,16 @@ class PostIt extends Component {
         this.getPostIts()
     }
     
+//    
+//                    <ViewPostIts
+//                   postItArray={
+//                        this.state.postItArray
+//                    }
+//                    setDivStyle={
+//                        this.state.divStyle
+//                    }
+//                    />
+
     render() {
 
         return (
@@ -113,9 +124,34 @@ class PostIt extends Component {
                         this.showPostIts
                     }
                     buttonText={
-                        "Se dina Post-Its"
+                        'Se dina Post-Its'
                     }
                 />
+                <div 
+                    id='listPostItsWrapper'
+                    className={
+                        this.state.divStyle
+                    }
+                >
+                    <div id="listPostItsHeader">
+                        <Heading2 
+                            title={
+                                'Dina Post-its'
+                            }
+                        />
+                        <Button
+                            buttonMission={
+                                this.closePostIts
+                            } 
+                            buttonText={
+                                <i className='far fa-times-circle'></i>
+                            }
+                        />
+                    </div>
+                    <ul>
+                        
+                    </ul>
+                </div>
             </div>
         );
     }

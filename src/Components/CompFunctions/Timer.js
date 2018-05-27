@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Heading2 from './Parts/Heading2';
+import Button from './Parts/Button';
 
 class Timer extends Component {
 
@@ -9,83 +10,100 @@ class Timer extends Component {
     }
 
     componentDidMount() {
-        this.setState({ timeLeft: 1000 * 6 / 100 })
-    }
-
-    handleChange = (event) => {
-        this.setState({ input: event.target.value })
+        this.setState({ timeLeft: 1000 * 6 / 100 });
     }
 
     activateTimer = () => {
-        this.countDownTimer();
-    }
-    
-    countDownTimer = () => {
-        let countDown = this.state.timeLeft - 1;
-        this.setState({timeLeft: countDown});
-        
-        if(this.state.timeLeft === 0){
-            this.stopTimer();
-        } else {
-            this.updateClock = setTimeout(this.countDownTimer, 1000);
+        if(this.state.timeLeft > 0) {
+            this.countDown();
         }
     }
     
+    pauseTimer = () => {
+        clearTimeout(this.updateClock);
+    }
+    
     stopTimer = () => {
-  //????
+        clearTimeout(this.updateClock);
+        this.setState({ timeLeft: 1000 * 6 / 100 });
     }
     
-    resetTimer = () => {
-        this.setState({ timeLeft: 1000 * 6 / 100 })        
+    countDown = () => {
+        let countDown = this.state.timeLeft - 1;
+        this.setState({ timeLeft: countDown });
+        
+        if(this.state.timeLeft !== 0) {
+            this.updateClock = setTimeout(this.countDown, 1000);
+        }
     }
-    
-    timerButton = () => {
-        if(this.state.timeLeft === 0) {
-            return <button id="resetButton" onClick={this.resetTimer}>Reset Timer</button>
-        } else {
-            return <button id="timerButton" onClick={this.activateTimer}>Start Timer</button>
-        } 
-    }
-    
-    setTimer = () => {
-        this.setState({ timeLeft: this.state.input})
-    }
-    
-    divStyle = {
-        backgroundColor: 'blue'
-    };
-
 
     render() { 
         
-let className = ''
-    if(this.state.timeLeft === 0) {
-         className = 'done'
-    } else {
-        className = 'timer'
-    }
+        let bgColor = '';
+        let resetButton = '';
         
-//        let counterClass = ''
-//    if(this.state.timeLeft <= 10) {
-//         counterClass = 'ending'
-//    } else if (this.state.timeLeft === 0) {
-//        counterClass = 'done'
-//    }
-
+        if(this.state.timeLeft === 0) {
+            bgColor = 'done';
+            resetButton = 'showTimerButton';
+        } else {
+            bgColor = 'none';
+            resetButton = 'hide';
+        }
+    
         return(
-            <div id="timer" className={className}>
+            <div id='timer'>
                 <Heading2 
                     title={
-                        "Timer"
+                        'Timer'
                     }
                 />
-               <input type="text" id="setTimerInput" onChange={this.handleChange}></input>
-               <button type="button" id="setTimerButton" onClick={this.setTimer}>Set time</button>
-               {this.timerButton()}
-                {this.state.timeLeft}
-                <button type="button" id="stopTimerButton" onClick={this.stopTimer}>Set time</button>
+                <p 
+                   id='time'
+                   className={
+                        bgColor
+                    }
+                >
+                    {
+                        this.state.timeLeft
+                    }
+                </p>
+                <Button                           
+                    buttonMission={
+                        this.stopTimer
+                    }
+                    buttonText={
+                        <i className='fas fa-stop-circle'></i>
+                    }
+                />
+                <Button                           
+                    buttonMission={
+                        this.activateTimer
+                    }
+                    buttonText={
+                        <i className='fas fa-play-circle'></i>
+                    }
+                />
+                <Button                           
+                    buttonMission={
+                        this.pauseTimer
+                    }
+                    buttonText={
+                        <i className='fas fa-pause-circle'></i>
+                    }
+                />
+                <Button   
+                    buttonClass={
+                        resetButton
+                    }                      
+                    buttonMission={
+                        this.stopTimer
+                    }
+                    buttonText={
+                        'ÅTERSTÄLL TIMER'
+                    }
+                />
             </div>
-        )
+        );
     }
 }
 
