@@ -104,18 +104,19 @@ main {
 
 /* ---- TIMER ---- */
 
-#time {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 140px;
-    font-size: 8em;
-    font-weight: 900;
-    margin: 30px;
+#timer {
+        transform: scale(1);
+}
+
+#timeMinutes,
+#timeSeconds,
+#timeSeperator {
+    font-size: 4em;
+    font-weight: 700;
+    padding: 10px 0;
     background: white;
-    border-radius: 10px;
     color: black;
-    transition: 300ms;
+    display: inline;
 }
 
 .done {
@@ -141,6 +142,20 @@ main {
     letter-spacing: 2px;
     border-radius: 5px;
     margin-top: 15px;
+}
+
+#timer input {
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 2em;
+    text-align: center;
+    width: 45px;
+}
+
+#timer span {
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 2em;
 }
 
 /* ---- POST IT ---- */
