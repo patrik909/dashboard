@@ -216,92 +216,65 @@ main {
     border-radius: 5px;    
 }
 
-#listPostItsWrapper {
+#postItWrapper {
     letter-spacing: 2px;
     background: rgba(0, 0, 0, 0.7);
-    z-index: 1000;
-    margin-top:-430px;
-    width: 480px;
-    height: 500px;
+    z-index: 10;
+    color: white;
     padding: 20px;
-    position: absolute;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
 }
 
-#listPostItsHeader {
+
+#postItWrapperHeader {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 50px;
+    margin-bottom: 30px;
 }
 
-#listPostItsHeader button {
+#postItWrapperHeader button {
     background: none;
     color: white;
     border: none;
     font-size: 2.1em;
     margin-left: 50px;  
 }
-/*
-#listPostItsHeader {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-}
 
-*/
-/*
-#listPostItsWrapper {
-    background: rgba(0, 0, 0, 0.7);
-    width: 500px;
-    padding: 50px;
-*/
-/*
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    letter-spacing: 2px;
-    background: rgba(0, 0, 0, 0.7);
-    position: fixed;
-    z-index: 20;
-    width: 100%;
-    height: 100%;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-*/
-
-
-
-/*
-#listPostItsWrapper:hover {
-transform: scale(1); 
-}
-*/
-
-/*
-ul {
-    margin: 0;
-    padding: 0;
-}
-
-#listPostItsWrapper li {
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    border-radius: 10px;
-    background: #ffe3af;
-    padding: 20px;
-    margin-bottom: 20px;
+#postItUl {
     width: 400px;
+    padding: 0;
+    margin: 0 auto;
+    height: 400px;
+    overflow: scroll;
+    border-radius: 5px;
 }
 
-#listPostItsWrapper span {
-    font-weight: 800;
+#postItUl li {
+    list-style: none;
+    padding: 30px;
+    background: #ffed8c;
+    border-radius: 10px;
+    color: #4f483d;
     margin-bottom: 10px;
+    min-height: 220px;
+    font-style: italic;
 }
-*/
+
+#postItUl li span {
+    font-weight: 700;
+}
+
+#postItUl li .underline {
+    border-bottom: 1px solid #4f483d;
+    margin: 25px 0;
+    width: 100%;
+}
 
 /* ---- EXCHANGE ---- */
 

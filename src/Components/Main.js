@@ -12,7 +12,7 @@ function Main() {
             <WeatherApp />
             <ExchangeRate />        
         </main>
-    );       
-}
+    );   
+}     
 
 export default Main;

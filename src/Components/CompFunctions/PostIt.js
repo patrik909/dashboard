@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Heading2 from './Parts/Heading2';
 import Button from './Parts/Button';
-import ViewPostIts from './Parts/ViewPostIts';
+import ViewPostIts from './ViewPostIts';
+import Modal from '../Modal';
 
 class PostIt extends Component {
 
@@ -10,7 +11,8 @@ class PostIt extends Component {
         postItArray: '',
         amountOfPostIts: '',
         wordEnding: '',
-        divStyle: 'show'
+        divStyle: 'hide',
+        view: ''
     }
 
     componentDidMount(){
@@ -22,11 +24,8 @@ class PostIt extends Component {
         this.setState({
             postItArray: JSON.parse(postIts) || []
         }, () => {
-//            console.log(this.state.postItArray)
             this.setAmountPostIt();
-//            console.log(this.state.postItArray)
         });
-        this.demoMethod();
     }
 
     setAmountPostIt = () => {
@@ -63,37 +62,64 @@ class PostIt extends Component {
     }
     
     showPostIts = () => {
-        this.setState({divStyle: 'show'})
+        this.setState({divStyle: 'show'})     
     }
-    
+
     closePostIts = () => {
         this.setState({divStyle: 'hide'})
     }
     
-    demoMethod = () => {
-    }
     
-    deletePostIt = (event) => {
-        const searchValue = this.state.postItArray.indexOf(event.target.value);
-        this.state.postItArray.splice(searchValue, 1);
-        localStorage.setItem('postIt', JSON.stringify(this.state.postItArray));
+    deletePostIt = (searchValue) => {
+        
+        const copyOfState = [...this.state.postItArray];
+        const filteredState = copyOfState.filter(postit => {
+            return postit.timestamp !== searchValue;
+        });
+        this.setState({ postItArray: filteredState });
+        localStorage.setItem('postIts', JSON.stringify(filteredState));
         this.getPostIts()
-    }
+//        
+//        console.log(searchValue)
+//        for(let i = 0; i < this.state.postItArray.length; i++){
+////            const index = this.state.postItArray.indexOf(searchValue)
+//
+////  
+//                if(this.state.postItArray[i].timestamp === searchValue){
+//                    console.log(this.state.postItArray[i].timestamp)
+//            
+//
+//                }
+//            console.log(this.state.postItArray)
+//            }
+
+        }
+                
+
+//        localStorage.setItem('postIts', JSON.stringify(this.state.postItArray));
+//        this.getPostIts()
     
-//    
-//                    <ViewPostIts
-//                   postItArray={
-//                        this.state.postItArray
-//                    }
-//                    setDivStyle={
-//                        this.state.divStyle
-//                    }
-//                    />
 
     render() {
-
+        console.log(this.state.postItArray)
         return (
             <div id="postIt">
+                <Modal element={document.getElementById('modal')}>
+                    <ViewPostIts 
+                    passData={
+                        this.state.postItArray
+                    }
+                    setDivStyle={
+                        this.state.divStyle
+                    }
+                    getDivStyle={
+                        this.closePostIts
+                    }
+                    deletePostIt={
+                        this.deletePostIt
+                    }
+                    />
+                </Modal>
                 <Heading2 
                     title={
                         "Post it"
@@ -127,31 +153,6 @@ class PostIt extends Component {
                         'Se dina Post-Its'
                     }
                 />
-                <div 
-                    id='listPostItsWrapper'
-                    className={
-                        this.state.divStyle
-                    }
-                >
-                    <div id="listPostItsHeader">
-                        <Heading2 
-                            title={
-                                'Dina Post-its'
-                            }
-                        />
-                        <Button
-                            buttonMission={
-                                this.closePostIts
-                            } 
-                            buttonText={
-                                <i className='far fa-times-circle'></i>
-                            }
-                        />
-                    </div>
-                    <ul>
-                        
-                    </ul>
-                </div>
             </div>
         );
     }

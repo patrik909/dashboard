@@ -9,6 +9,9 @@ function Button(props) {
             className={
                 props.buttonClass
             }
+            value={
+                props.value
+            }
         >
         {
             props.buttonText
