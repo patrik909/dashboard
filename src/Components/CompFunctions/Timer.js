@@ -14,14 +14,12 @@ class Timer extends Component {
     }
 
     componentDidMount() {
-        this.setState({ minutesLeft: 5})
-        this.setState({ secondsLeft: 0})        
+        this.setState({ minutesLeft: 5});
+        this.setState({ secondsLeft: 0});      
     }
 
     activateTimer = () => {
-//        if(this.state.timeLeft > 0) {
-            this.countDown();
-//        }
+        this.countDown();
     }
     
     pauseTimer = () => {
@@ -30,20 +28,30 @@ class Timer extends Component {
     
     stopTimer = () => {
         clearTimeout(this.updateClock);
-        //this.setState({ timeLeft: 1000 * 6 / 100 });
+        if (this.state.inputMinutes && this.state.inputSeconds) {
+            this.setState({ minutesLeft: this.state.inputMinutes});
+            this.setState({ secondsLeft: this.state.inputSeconds});  
+        } else if (this.state.inputMinutes) {
+            this.setState({ minutesLeft: this.state.inputMinutes});            
+        } else if (this.state.inputSeconds) {
+            this.setState({ secondsLeft: this.state.inputSeconds}); 
+        } else {
+            this.setState({ minutesLeft: 5});
+            this.setState({ secondsLeft: 0});  
+        }
     }
     
     countDown = () => {
-        if(this.state.secondsLeft === 0) {
-            if(this.state.minutesLeft === 0) {
+        if (this.state.secondsLeft === 0) {
+            if (this.state.minutesLeft === 0) {
                 clearTimeout(this.updateClock);
-            } else if(this.state.minutesLeft > 0){
+            } else if (this.state.minutesLeft > 0) {
                 let countDownMinutes = this.state.minutesLeft - 1;
                 this.setState({ minutesLeft: countDownMinutes });
-                this.setState({ secondsLeft: 59 })
+                this.setState({ secondsLeft: 59 });
                 this.updateClock = setTimeout(this.countDown, 1000);
             }    
-        } else {
+        } else if (this.state.secondsLeft > 0) {
             let countDownSeconds = this.state.secondsLeft - 1;
             this.setState({ secondsLeft: countDownSeconds });
             this.updateClock = setTimeout(this.countDown, 1000);
@@ -51,41 +59,37 @@ class Timer extends Component {
     }
     
     setTimer = () => {
-        this.setState({ minutesLeft: this.state.inputMinutes})
-        this.setState({ secondsLeft: this.state.inputSeconds})
+        this.setState({ minutesLeft: Number(this.state.inputMinutes) });
+        this.setState({ secondsLeft: Number(this.state.inputSeconds) });
     }
     
     handleInputMinutes = (event) => {
-        this.setState({ inputMinutes: event.target.value })
+        this.setState({ inputMinutes: event.target.value });
+
     }
     
     handleInputSeconds = (event) => {
-        this.setState({ inputSeconds: event.target.value })
+        this.setState({ inputSeconds: event.target.value });     
     }
 
     render() { 
-        
-        console.log(this.state.minutesLeft)
-        console.log(this.state.secondsLeft)
-        
         let bgColor = '';
         let resetButton = '';
-        
-//        if(this.state.secondsLeft === 0 && this.state.minutesLeft === 0) {
-//            bgColor = 'done';
-//            resetButton = 'showTimerButton';
-//        } else {
-//            bgColor = 'none';
-//            resetButton = 'hide';
-//        }
+        if(this.state.secondsLeft === 0 && this.state.minutesLeft === 0) {
+            bgColor = 'done';
+            resetButton = 'showTimerButton';
+        } else {
+            bgColor = 'none';
+            resetButton = 'hide';
+        }
         
         let minutes = '';
-        let seconds = '';
         if(this.state.minutesLeft < 10) {
             minutes = '0' + this.state.minutesLeft
         } else {
             minutes = this.state.minutesLeft
         }
+        let seconds = '';
         if(this.state.secondsLeft < 10) {
             seconds = '0' + this.state.secondsLeft
         } else {
@@ -93,64 +97,86 @@ class Timer extends Component {
         }
     
         return(
-            <div id='timer'>
+            <div id='timerWrapper'>
                 <Heading2 
                     title={
                         'Timer'
                     }
                 />
-                <p 
-                   id='timeMinutes'
-                   className={
-                        bgColor
-                    }
-                >
-                    {
-                        minutes
-                    }
-                </p>
-                <span 
-                    id="timeSeperator"
+                <div 
+                   id='timer'
                     className={
                         bgColor
                     }
-                >
-                :
-                </span>
-                <p 
-                   id='timeSeconds'
-                   className={
-                        bgColor
-                    }
-                >
-                    {
-                        seconds
-                    }
-                </p>
-                <Button                           
-                    buttonMission={
-                        this.stopTimer
-                    }
-                    buttonText={
-                        <i className='fas fa-stop-circle'></i>
-                    }
-                />
-                <Button                           
-                    buttonMission={
-                        this.activateTimer
-                    }
-                    buttonText={
-                        <i className='fas fa-play-circle'></i>
-                    }
-                />
-                <Button                           
-                    buttonMission={
-                        this.pauseTimer
-                    }
-                    buttonText={
-                        <i className='fas fa-pause-circle'></i>
-                    }
-                />
+                        >
+                    <p id='timeMinutes'>
+                        {
+                            minutes
+                        }
+                    </p>
+                    <span id='timeSeperator'>
+                    :
+                    </span>
+                    <p id='timeSeconds'>
+                        {
+                            seconds
+                        }
+                    </p>    
+                </div>
+                <div id='controlTimer'>
+                    <Button                           
+                        buttonMission={
+                            this.stopTimer
+                        }
+                        buttonText={
+                            <i className='fas fa-stop-circle'></i>
+                        }
+                    />
+                    <Button                           
+                        buttonMission={
+                            this.activateTimer
+                        }
+                        buttonText={
+                            <i className='fas fa-play-circle'></i>
+                        }
+                    />
+                    <Button                           
+                        buttonMission={
+                            this.pauseTimer
+                        }
+                        buttonText={
+                            <i className='fas fa-pause-circle'></i>
+                        }
+                    />  
+                </div>
+                <div id='setTimer'>
+                    <InputField 
+                        handle={
+                            this.handleInputMinutes
+                        }
+                        placeholder={
+                            '00'
+                        }
+                    />:
+                    <InputField 
+                        handle={
+                            this.handleInputSeconds
+                        }
+                        placeholder={
+                            '00'
+                        }
+                    />
+                    |
+                    <Button                      
+                        buttonMission={
+                            this.setTimer
+                        }
+                        buttonText={
+                            'SÄTT TIMER'
+                        }
+                    /> 
+                     
+                </div>
                 <Button   
                     buttonClass={
                         resetButton
@@ -160,31 +186,6 @@ class Timer extends Component {
                     }
                     buttonText={
                         'ÅTERSTÄLL TIMER'
-                    }
-                />
-                <InputField 
-                    handle={
-                        this.handleInputMinutes
-                    }
-                    placeholder={
-                        '00'
-                    }
-                />
-                <span>:</span>
-                <InputField 
-                    handle={
-                        this.handleInputSeconds
-                    }
-                    placeholder={
-                        '00'
-                    }
-                />
-                <Button                      
-                    buttonMission={
-                        this.setTimer
-                    }
-                    buttonText={
-                        'SÄTT TIMER'
                     }
                 />
             </div>
