@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Heading2 from './Parts/Heading2';
 import InputField from './Parts/InputField';
 import Button from './Parts/Button';
-import WeatherContent from './Parts/WeatherContent';
+import WeatherContent from './SubComponents/WeatherContent';
 
 class WeatherApp extends Component {
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import Heading3 from './Heading3';
-import Button from './Button';
+import Heading3 from '../Parts/Heading3';
+import Button from '../Parts/Button';
 import FormateDate from './FormateDate';
 
 function LastUpdatedExchangeRate(props) {

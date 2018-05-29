@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import InputField from './InputField';
-import Button from './Button';
+import InputField from '../Parts/InputField';
+import Button from '../Parts/Button';
 
 class CurrentExchangeRate extends Component {
     

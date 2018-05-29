@@ -1,6 +1,6 @@
 import React from 'react';
-import Clock from './CompFunctions/Clock';
-import Heading1 from './Heading1';
+import Clock from './Components/Clock';
+import Heading1 from './Components/Parts/Heading1';
 
 function Header() {
     return(

@@ -1,7 +1,6 @@
 import React from 'react';
-import Heading2 from './Parts/Heading2';
-import Button from './Parts/Button';
-import ReactDom from 'react-dom';
+import Heading2 from '../Parts/Heading2';
+import Button from '../Parts/Button';
 
 function ViewPostIts(props) {
 

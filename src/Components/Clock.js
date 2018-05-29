@@ -1,5 +1,5 @@
 import React from 'react';
-import FormateDate from './Parts/FormateDate';
+import FormateDate from './SubComponents/FormateDate';
 
 function Clock() {
     return(

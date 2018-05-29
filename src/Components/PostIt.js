@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Heading2 from './Parts/Heading2';
 import Button from './Parts/Button';
-import ViewPostIts from './ViewPostIts';
+import ViewPostIts from './SubComponents/ViewPostIts';
 import PostItPopUp from '../PostItPopUp';
 
 class PostIt extends Component {

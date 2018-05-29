@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Heading2 from './Parts/Heading2';
-import CurrentExchangeRate from './Parts/CurrentExchangeRate';
-import LastUpdatedExchangeRate from './Parts/LastUpdatedExchangeRate';
+import CurrentExchangeRate from './SubComponents/CurrentExchangeRate';
+import LastUpdatedExchangeRate from './SubComponents/LastUpdatedExchangeRate';
 
 class ExchangeRate extends Component {
     

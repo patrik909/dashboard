@@ -1,8 +1,8 @@
 import React from 'react';
-import Timer from './CompFunctions/Timer';
-import WeatherApp from './CompFunctions/WeatherApp';
-import PostIt from './CompFunctions/PostIt';
-import ExchangeRate from './CompFunctions/ExchangeRate';
+import Timer from './Components/Timer';
+import WeatherApp from './Components/WeatherApp';
+import PostIt from './Components/PostIt';
+import ExchangeRate from './Components/ExchangeRate';
 
 function Main() {
     return(
