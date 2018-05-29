@@ -86,7 +86,7 @@ main {
     justify-content: center;
 }
 
-#timerWrapper,
+#timer,
 #postIt,
 #weatherApp, 
 #exchangeRate {
@@ -102,7 +102,7 @@ main {
     transition: 200ms;
 }
 
-#timerWrapper:hover,
+#timer:hover,
 #postIt:hover,
 #weatherApp:hover, 
 #exchangeRate:hover {
@@ -118,7 +118,7 @@ main {
     display: block;
 }
 
-#timer {
+#timerClock {
     display: flex;
     justify-content: center;
     font-size: 4.5em;
@@ -129,12 +129,12 @@ main {
     margin: 20px 10px;
 }
 
-#timer p {
+#timerClock p {
     margin: 0;
     padding: 0;
 }
 
-#timerWrapper button {
+#timer button {
     font-size: 2em;
     color: white;
     background: none;
@@ -209,7 +209,7 @@ main {
     border-radius: 5px;    
 }
 
-#postItWrapper {
+#viewPostItWrapper {
     letter-spacing: 2px;
     background: rgba(0, 0, 0, 0.7);
     z-index: 10;
@@ -223,7 +223,7 @@ main {
 }
 
 
-#postItWrapperHeader {
+#viewPostItWrapperHeader {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -231,14 +231,14 @@ main {
     margin-bottom: 30px;
 }
 
-#postItWrapperHeader button {
+#viewPostItWrapperHeader button {
     background: none;
     color: white;
     font-size: 2.1em;
     margin-left: 50px;  
 }
 
-#postItUl {
+#viewPostItUl {
     width: 400px;
     padding: 0;
     margin: 0 auto;
@@ -247,7 +247,7 @@ main {
     border-radius: 5px;
 }
 
-#postItUl li {
+#viewPostItUl li {
     display: flex;
     flex-direction: column;
     background-image: url(images/paperBg.jpg);
@@ -256,30 +256,30 @@ main {
     list-style: none;
     padding: 30px;
     border-radius: 10px;
-    color: #4f483d;
+    color: #332e27;
     margin-bottom: 10px;
     min-height: 220px;
     font-style: italic;
 }
 
-#postItUl li span {
+#viewPostItUl li span {
     text-align: center;
     font-weight: 700;
 }
 
-#postItUl li .underline {
+#viewPostItUl li .underline {
     border-bottom: 1px solid #4f483d;
     margin: 25px 0;
     width: 100%;
 }
 
-#postItUl li button {
+#viewPostItUl li button {
     font-weight: 700;
     font-size: 0.9em;
     padding: 5px 0;
     width: 100px;
     margin-top: 30px;
-    background: #4f483d;
+    background: #332e27;
     color: #f8eec9;
 }
 
@@ -360,7 +360,7 @@ main {
     margin: 35px 0 25px 0;
 }
 
-#description {
+#weatherDescription {
     font-style: italic;
     text-transform: uppercase;
     background: #ff5000;

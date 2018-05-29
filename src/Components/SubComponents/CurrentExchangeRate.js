@@ -20,7 +20,7 @@ class CurrentExchangeRate extends Component {
         );
     }   
     
-    rateDataShortneer = (rate) => {
+    rateDataShortener = (rate) => {
         return Math.round(rate * 100) / 100;
     }
     
@@ -29,7 +29,7 @@ class CurrentExchangeRate extends Component {
         this.setState({ calculatedValue: calculatedSum });
     }
 
-    handleChange = (event) => {
+    handleInput = (event) => {
         if (event.target.value && !isNaN(event.target.value)) {
             this.setState({ usersValue: event.target.value });
         }
@@ -40,7 +40,7 @@ class CurrentExchangeRate extends Component {
             <div id='currentRate'>
                 <InputField 
                     handle={
-                        this.handleChange
+                        this.handleInput
                     }
                     placeholder={
                         '1'
@@ -54,7 +54,7 @@ class CurrentExchangeRate extends Component {
                         'KÖR'
                     }
                 />
-                <p id='calculated'> { this.rateDataShortneer(this.state.calculatedValue) } SEK</p>
+                <p id='calculated'> { this.rateDataShortener(this.state.calculatedValue) } SEK</p>
             </div>
         )
     }   

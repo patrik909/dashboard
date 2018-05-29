@@ -100,14 +100,14 @@ class Timer extends Component {
         }
     
         return(
-            <div id='timerWrapper'>
+            <div id='timer'>
                 <Heading2 
                     title={
                         'Timer'
                     }
                 />
                 <div 
-                   id='timer'
+                   id='timerClock'
                     className={
                         bgColor
                     }

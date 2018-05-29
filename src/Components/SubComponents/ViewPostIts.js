@@ -21,12 +21,12 @@ function ViewPostIts(props) {
     if (props.passData.length !== 0) {
         return (
             <div 
-               id='postItWrapper' 
+               id='viewPostItWrapper' 
                className={
                     props.setDivStyle
                 }
             >
-                <div id='postItWrapperHeader'>
+                <div id='viewPostItWrapperHeader'>
                     <Heading2 
                        title={
                             'Dina Post-its'
@@ -41,7 +41,7 @@ function ViewPostIts(props) {
                         }
                     />  
                 </div>
-                <ul id='postItUl'>
+                <ul id='viewPostItUl'>
                     {
                         props.passData.map((postIt, i) => {
                             return (

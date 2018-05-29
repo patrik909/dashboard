@@ -9,7 +9,7 @@ class PostIt extends Component {
     state = {
         input: '',
         postItArray: '',
-        amountOfPostIts: '',
+        amountOfPostIts: 0,
         wordEnding: '',
         divStyle: 'hide'
     }
@@ -28,19 +28,15 @@ class PostIt extends Component {
     }
 
     setAmountPostIt = () => {
-        if (this.state.postItArray.length > 1) {
+        if (this.state.postItArray.length > 1 || this.state.postItArray.length === 0) {
             this.setState({
                 amountOfPostIts: this.state.postItArray.length,
                 wordEnding: 's'
             });
-        } else if (this.state.postItArray.length === 0) {
-            this.setState({
-                amountOfPostIts: 0,
-                wordEnding: 's'
-            });   
         } else {
             this.setState({
-                amountOfPostIts: this.state.postItArray.length
+                amountOfPostIts: this.state.postItArray.length,
+                wordEnding: ''
             });
         } 
     }
@@ -49,15 +45,16 @@ class PostIt extends Component {
         this.setState({ input: event.target.value });
     }
 
-    postIt = () => {
+    addPostIt = () => {
+        const postItArray = [...this.state.postItArray];
         if (this.state.input !== '') {
             const timeStamp = new Date();
             let newPostIt = {
                 timestamp: timeStamp,
                 postItContent: this.state.input
             }
-            this.state.postItArray.unshift(newPostIt);
-            localStorage.setItem('postIts', JSON.stringify(this.state.postItArray));
+            postItArray.unshift(newPostIt);
+            localStorage.setItem('postIts', JSON.stringify(postItArray));
             this.getPostIts();
         }
     }
@@ -123,7 +120,7 @@ class PostIt extends Component {
                 </textarea>    
                 <Button 
                     buttonMission={
-                        this.postIt
+                        this.addPostIt
                     }
                     buttonText={
                         'Post-it'
