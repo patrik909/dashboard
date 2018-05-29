@@ -1,9 +1,9 @@
 import React from 'react';
 import FormateDate from './Parts/FormateDate';
 
-function Clock(){
+function Clock() {
     return(
-        <div id="clock">
+        <div id='clock'>
             <FormateDate 
                 clock={
                     true

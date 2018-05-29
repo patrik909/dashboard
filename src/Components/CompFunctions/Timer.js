@@ -29,15 +29,15 @@ class Timer extends Component {
     stopTimer = () => {
         clearTimeout(this.updateClock);
         if (this.state.inputMinutes && this.state.inputSeconds) {
-            this.setState({ minutesLeft: this.state.inputMinutes});
-            this.setState({ secondsLeft: this.state.inputSeconds});  
+            this.setState({ minutesLeft: this.state.inputMinutes });
+            this.setState({ secondsLeft: this.state.inputSeconds });  
         } else if (this.state.inputMinutes) {
-            this.setState({ minutesLeft: this.state.inputMinutes});            
+            this.setState({ minutesLeft: this.state.inputMinutes });            
         } else if (this.state.inputSeconds) {
-            this.setState({ secondsLeft: this.state.inputSeconds}); 
+            this.setState({ secondsLeft: this.state.inputSeconds }); 
         } else {
-            this.setState({ minutesLeft: 5});
-            this.setState({ secondsLeft: 0});  
+            this.setState({ minutesLeft: 5 });
+            this.setState({ secondsLeft: 0 });  
         }
     }
     
@@ -64,12 +64,15 @@ class Timer extends Component {
     }
     
     handleInputMinutes = (event) => {
-        this.setState({ inputMinutes: event.target.value });
-
+        if (event.target.value < 100) {
+            this.setState({ inputMinutes: event.target.value });
+        }
     }
     
     handleInputSeconds = (event) => {
-        this.setState({ inputSeconds: event.target.value });     
+        if (event.target.value < 100) {
+            this.setState({ inputSeconds: event.target.value });         
+        }    
     }
 
     render() { 

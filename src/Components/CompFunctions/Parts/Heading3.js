@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Heading3(props){
-    return <h3>{props.title}</h3>;
+function Heading3(props) {
+    return <h3> { props.title } </h3>;
 }
 
 export default Heading3;

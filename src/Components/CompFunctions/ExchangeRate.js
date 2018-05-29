@@ -15,22 +15,22 @@ class ExchangeRate extends Component {
 
     fetchExchangeRate = () => {
         fetch('http://data.fixer.io/api/latest?access_key=0c37d712d227216587eb6d65741eac63')
-            .then(function(response){
+            .then(function(response ){
                 return response.json();
             }).then((exchangeRateData) => {
-                this.setState({exchangeRateData})
-            }).catch(function(error){
+                this.setState({ exchangeRateData })
+            }).catch(function(error) {
                 console.log(error);
             });
     }
 
     render() {
-        if(this.state.exchangeRateData.length !== 0) {
+        if (this.state.exchangeRateData.length !== 0) {
             return (
-                <div id="exchangeRate">
+                <div id='exchangeRate'>
                     <Heading2 
                         title={
-                            "Växelkurs"
+                            'Växelkurs'
                         } 
                     />
                     <p>Euro / SEK</p>

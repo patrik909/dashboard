@@ -1,8 +1,8 @@
 import React from 'react';
-import ConvertTime from './ConvertTime';
+import ConvertTime from './FormatedDate';
 
 function LastUpdatedTime(props) {
-    return <p id="lastUpdatedTime"> <ConvertTime time={props.time} /> </p>;
+    return <p id='lastUpdatedTime'> <FormatedDate time={ props.time } /> </p>;
 }
     
 export default LastUpdatedTime;

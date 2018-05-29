@@ -5,17 +5,28 @@ import ReactDom from 'react-dom';
 
 function ViewPostIts(props) {
 
-        function closePostIts() {
-            props.getDivStyle();
-        }
-        function deletePostIt(event) {
-            let value = event.target.value
-            props.deletePostIt(value);
-        }
+    function closePostIts() {
+        props.getDivStyle();
+    }
+    function deletePostIt(event) {
+        let value = event.target.value;
+        props.deletePostIt(value);
+    }
+    function convertTimestamp(timestamp) {
+        const timestampDate = timestamp.substr(0,10);
+        const timestampTime = timestamp.substr(11, 5);
+        
+        return timestampDate + ' | ' + timestampTime;
+    }
 
-        if(props.passData.length !== 0){
+    if (props.passData.length !== 0) {
         return (
-            <div id="postItWrapper" className={props.setDivStyle}>
+            <div 
+               id='postItWrapper' 
+               className={
+                    props.setDivStyle
+                }
+            >
                 <div id='postItWrapperHeader'>
                     <Heading2 
                        title={
@@ -31,7 +42,7 @@ function ViewPostIts(props) {
                         }
                     />  
                 </div>
-                <ul id="postItUl">
+                <ul id='postItUl'>
                     {
                         props.passData.map((postIt, i) => {
                             return (
@@ -42,7 +53,7 @@ function ViewPostIts(props) {
                                 >
                                     <span>
                                         {
-                                            postIt.timestamp
+                                            convertTimestamp(postIt.timestamp)
                                         }                        
                                     </span>
                                     <div className='underline'></div>
@@ -67,8 +78,8 @@ function ViewPostIts(props) {
                 </ul>            
             </div>
         );
-        } else {
-            return null;
-        }
+    } else {
+        return null;
+    }
 }
 export default ViewPostIts;

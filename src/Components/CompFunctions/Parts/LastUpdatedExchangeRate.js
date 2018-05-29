@@ -5,10 +5,10 @@ import FormateDate from './FormateDate';
 
 function LastUpdatedExchangeRate(props) {
     return (
-        <div id="lastUpdated">
+        <div id='lastUpdated'>
             <Heading3 
                 title={
-                    "Senast uppdaterad"
+                    'Senast uppdaterad'
                 } 
             />
             <FormateDate 
@@ -21,7 +21,7 @@ function LastUpdatedExchangeRate(props) {
                     props.updateButton
                 }
                 buttonText={
-                    "Uppdatera"
+                    'Uppdatera'
                 }
             />
         </div>

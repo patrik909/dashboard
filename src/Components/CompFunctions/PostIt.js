@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Heading2 from './Parts/Heading2';
 import Button from './Parts/Button';
 import ViewPostIts from './ViewPostIts';
-import Modal from '../Modal';
+import PostItPopUp from '../PostItPopUp';
 
 class PostIt extends Component {
 
@@ -11,8 +11,7 @@ class PostIt extends Component {
         postItArray: '',
         amountOfPostIts: '',
         wordEnding: '',
-        divStyle: 'hide',
-        view: ''
+        divStyle: 'hide'
     }
 
     componentDidMount(){
@@ -29,15 +28,16 @@ class PostIt extends Component {
     }
 
     setAmountPostIt = () => {
-        if(this.state.postItArray.length > 1) {
+        if (this.state.postItArray.length > 1) {
             this.setState({
                 amountOfPostIts: this.state.postItArray.length,
                 wordEnding: 's'
             });
-        } else if(this.state.postItArray.length === 0) {
+        } else if (this.state.postItArray.length === 0) {
             this.setState({
                 amountOfPostIts: 0,
-                wordEnding: 's'});   
+                wordEnding: 's'
+            });   
         } else {
             this.setState({
                 amountOfPostIts: this.state.postItArray.length
@@ -45,66 +45,50 @@ class PostIt extends Component {
         } 
     }
 
-    handleChange = (event) => {
-        this.setState({input: event.target.value});
+    handleInput = (event) => {
+        this.setState({ input: event.target.value });
     }
 
     postIt = () => {
-        const timeStamp = new Date();
-        let newPostIt = {
-            timestamp: timeStamp,
-            postItContent: this.state.input
+        if (this.state.input !== '') {
+            const timeStamp = new Date();
+            let newPostIt = {
+                timestamp: timeStamp,
+                postItContent: this.state.input
+            }
+            this.state.postItArray.unshift(newPostIt);
+            localStorage.setItem('postIts', JSON.stringify(this.state.postItArray));
+            this.getPostIts();
         }
-        this.state.postItArray.unshift(newPostIt);
-        localStorage.setItem('postIts', JSON.stringify(this.state.postItArray));
-        
-        this.getPostIts();
     }
     
     showPostIts = () => {
-        this.setState({divStyle: 'show'})     
+        this.setState({ divStyle: 'show' });     
     }
 
     closePostIts = () => {
-        this.setState({divStyle: 'hide'})
+        this.setState({ divStyle: 'hide' });
     }
     
     
-    deletePostIt = (searchValue) => {
-        
-        const copyOfState = [...this.state.postItArray];
-        const filteredState = copyOfState.filter(postit => {
-            return postit.timestamp !== searchValue;
+    deletePostIt = (searchValue) => { 
+        const postItArray = [...this.state.postItArray];
+        const filteredState = postItArray.filter(postIt => {
+            return postIt.timestamp !== searchValue;
         });
         this.setState({ postItArray: filteredState });
         localStorage.setItem('postIts', JSON.stringify(filteredState));
         this.getPostIts()
-//        
-//        console.log(searchValue)
-//        for(let i = 0; i < this.state.postItArray.length; i++){
-////            const index = this.state.postItArray.indexOf(searchValue)
-//
-////  
-//                if(this.state.postItArray[i].timestamp === searchValue){
-//                    console.log(this.state.postItArray[i].timestamp)
-//            
-//
-//                }
-//            console.log(this.state.postItArray)
-//            }
-
-        }
+     }
                 
-
-//        localStorage.setItem('postIts', JSON.stringify(this.state.postItArray));
-//        this.getPostIts()
-    
-
     render() {
-        console.log(this.state.postItArray)
         return (
-            <div id="postIt">
-                <Modal element={document.getElementById('modal')}>
+            <div id='postIt'>
+                <PostItPopUp 
+                   element={
+                        document.getElementById('modal')
+                    }
+                >
                     <ViewPostIts 
                     passData={
                         this.state.postItArray
@@ -119,21 +103,21 @@ class PostIt extends Component {
                         this.deletePostIt
                     }
                     />
-                </Modal>
+                </PostItPopUp>
                 <Heading2 
                     title={
-                        "Post it"
+                        'Post it'
                     } 
                 />
-                <p id="amountOfPostIts">
-                    Du har ({this.state.amountOfPostIts}) Post-It{this.state.wordEnding}
+                <p id='amountOfPostIts'>
+                    Du har ({ this.state.amountOfPostIts }) Post-It{ this.state.wordEnding }
                 </p>
                 <textarea 
-                   rows="8"
-                   maxLength="150"
-                   placeholder="Max 150 tecken!"
+                   rows='8'
+                   maxLength='150'
+                   placeholder='Max 150 tecken!'
                    onChange={
-                        this.handleChange
+                        this.handleInput
                     }
                 >
                 </textarea>    
@@ -142,7 +126,7 @@ class PostIt extends Component {
                         this.postIt
                     }
                     buttonText={
-                        "Post-it"
+                        'Post-it'
                     }
                 />
                 <Button 

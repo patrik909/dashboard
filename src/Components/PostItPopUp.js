@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-function Modal(props){
+function PostItPopUp(props) {
     return ReactDOM.createPortal(
         props.children,
         props.element
-    )
+    );
 }
 
-export default Modal;
+export default PostItPopUp;

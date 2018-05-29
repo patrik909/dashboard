@@ -19,7 +19,7 @@ class FormateDate extends Component {
 
     getTime = (date) => {
         let newDate = '';
-        if(date){
+        if (date) {
             newDate = new Date(date);  
         } else {
             newDate = new Date();
@@ -31,21 +31,20 @@ class FormateDate extends Component {
     }
     
     formateTime = (hour, minute, secound) => {   
-        if(hour < 10){ hour = '0' + hour }   
-        if(minute < 10){ minute = '0' + minute }
-        if(secound < 10){ secound = '0' + secound }
+        if (hour < 10) { hour = '0' + hour }   
+        if (minute < 10) { minute = '0' + minute }
+        if (secound < 10) { secound = '0' + secound }
         
-        this.setState({hours: hour});
-        this.setState({minutes: minute});
-        this.setState({secounds: secound});
+        this.setState({ hours: hour });
+        this.setState({ minutes: minute });
+        this.setState({ secounds: secound });
     }
 
     render() {
         return (
-            <p> {this.state.hours}:{this.state.minutes}:{this.state.secounds} </p>
+            <p> { this.state.hours }:{ this.state.minutes }:{ this.state.secounds } </p>
         )
     }
-    
 }
 
 export default FormateDate;

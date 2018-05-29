@@ -2,7 +2,7 @@ import React from 'react';
 import Clock from './CompFunctions/Clock';
 import Heading1 from './Heading1';
 
-function Header(){
+function Header() {
     return(
         <header>
             <Heading1 />

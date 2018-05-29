@@ -10,7 +10,7 @@ class CurrentExchangeRate extends Component {
         calculatedValue: ''
     }
     
-    componentDidMount(){
+    componentDidMount() {
         this.setState(
             {
                 currentRate: this.props.current
@@ -26,24 +26,24 @@ class CurrentExchangeRate extends Component {
     
     calculate = () => {
         let calculatedSum = this.state.usersValue * this.state.currentRate;   
-        this.setState({calculatedValue: calculatedSum});
+        this.setState({ calculatedValue: calculatedSum });
     }
 
     handleChange = (event) => {
-        if(event.target.value && !isNaN(event.target.value)) {
-            this.setState({usersValue: event.target.value});
+        if (event.target.value && !isNaN(event.target.value)) {
+            this.setState({ usersValue: event.target.value });
         }
     }
 
     render() {
         return (
-            <div id="currentRate">
+            <div id='currentRate'>
                 <InputField 
                     handle={
                         this.handleChange
                     }
                     placeholder={
-                        "1"
+                        '1'
                     }
                 />
                 <Button 
@@ -51,14 +51,13 @@ class CurrentExchangeRate extends Component {
                         this.calculate
                     }
                     buttonText={
-                        "KÖR!"
+                        'KÖR'
                     }
                 />
-                <p id="calculated">{this.rateDataShortneer(this.state.calculatedValue)} SEK</p>
+                <p id='calculated'> { this.rateDataShortneer(this.state.calculatedValue) } SEK</p>
             </div>
         )
-    }
-    
+    }   
 }
 
 export default CurrentExchangeRate;

@@ -11,7 +11,7 @@ class WeatherApp extends Component {
         searchCity: ''
     }
 
-    componentWillMount(){  
+    componentWillMount() {  
         this.fetchWeather('Stockholm');
     }
 
@@ -25,20 +25,19 @@ class WeatherApp extends Component {
 
     fetchWeather = (city) => {
         fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=29ade8ca6839d956c50b969a7afbc59b&units=metric&lang=se`)
-            .then(function(response){
+            .then(function(response) {
                 return response.json();
             }).then((weatherData) => {
-            if(weatherData.cod === 200) {
+            if (weatherData.cod === 200) {
                 this.setState({weatherData});
             }
-            
-            }).catch(function(error){
+            }).catch(function(error) {
                 console.log(error);
             });
     }
  
     render() {
-        if(this.state.weatherData.length !== 0) {
+        if (this.state.weatherData.length !== 0) {
             return (
                 <div id='weatherApp'>
                     <Heading2 
@@ -59,7 +58,7 @@ class WeatherApp extends Component {
                             this.searchButton
                         }
                         buttonText={
-                            <i className="fas fa-search"></i>
+                            <i className='fas fa-search'></i>
                         }
                     />
                     <WeatherContent
